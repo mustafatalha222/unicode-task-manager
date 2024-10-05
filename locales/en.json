@@ -1,0 +1,13 @@
+{
+  "english": "English",
+  "arabic": "Arabic",
+  "Login": {
+    "login": "login"
+  },
+  "SignUp": {
+    "signup": "SignUp"
+  },
+  "Dashboard": {
+    "Dashboard": "dashboard"
+  }
+}

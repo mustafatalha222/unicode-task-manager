@@ -1,0 +1,13 @@
+{
+  "english": "الإنجليزية",
+  "arabic": "العربية",
+  "Login": {
+    "login": "تسجيل الدخول"
+  },
+  "SignUp": {
+    "signup": "تسجيل"
+  },
+  "Dashboard": {
+    "Dashboard": "لوحة القيادة"
+  }
+}
