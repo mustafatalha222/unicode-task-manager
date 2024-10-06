@@ -1,7 +1,7 @@
-import { API_STATUS } from '@/db/constant'
+import { API_STATUS, saltRounds } from '@/db/constant'
 import User from '@/db/models/User'
 import { createResponse, withDb } from '@/db/helper'
-import bcrypt from 'bcryptjs'
+import bcrypt from 'bcrypt'
 import { NextResponse } from 'next/server'
 
 interface UserRegistrationRequest {
@@ -12,7 +12,7 @@ interface UserRegistrationRequest {
 
 // Function to hash the password
 export const hashPassword = async (password: string) => {
-  return await bcrypt.hash(password, 10)
+  return await bcrypt.hash(password, saltRounds)
 }
 
 const registerUser = async (request: Request): Promise<NextResponse> => {

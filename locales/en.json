@@ -21,6 +21,15 @@
   "Login": "Login",
   "submit": "Submit",
 
+  "Heading": {
+    "dashboard": "Dashboard",
+    "users": "Users",
+    "tasks": "Tasks",
+    "profile": "Profile",
+    "logout": "Logout"
+  },
+  "confirm_logout": "Are you sure you want to logout!",
+
   "authErrorMessage": "Sign-in failed!",
   "User successfully registered": "User successfully registered",
   "Email is already in use": "Email is already in use",
