@@ -1,29 +1,30 @@
 'use client'
-import { setLanguage } from '../store/slices/languageSlice' // Adjust the path
-import { useAppDispatch } from '@/hooks/redux'
-import { useRouter } from '@/i18n/routing'
-import { useTranslations } from 'next-intl'
+import { useAppDispatch } from '@/hooks/useRedux'
+import { usePathname, useRouter } from '@/i18n/routing'
+import { useLocale, useTranslations } from 'next-intl'
+import { Switch } from './ui/switch'
+import { setLanguage } from '@/store/slices/languageSlice'
 
 const LanguageSwitcher = () => {
-  const t = useTranslations()
+  const t = useTranslations('Lang')
   const dispatch = useAppDispatch()
   const router = useRouter()
+  const pathname = usePathname()
+  const currentLocale = useLocale()
 
-  const changeLanguage = (locale: 'en' | 'ar') => {
+  const changeLanguage = () => {
+    const locale = currentLocale === 'en' ? 'ar' : 'en'
     dispatch(setLanguage(locale))
-    const { pathname, search } = window.location
-    const newPathname = pathname.split('/').slice(2).join('/')
-    router.replace(`/${newPathname}${search}`, { locale })
+
+    router.replace(pathname, { locale })
   }
 
   return (
-    <div className="flex space-x-4">
-      <button onClick={() => changeLanguage('en')} className="p-2 bg-blue-500 text-white rounded">
-        {t('english')}
-      </button>
-      <button onClick={() => changeLanguage('ar')} className="p-2 bg-green-500 text-white rounded">
-        {t('arabic')}
-      </button>
+    <div className="flex items-center space-x-2">
+      <span className={`font-bold text-sm ${currentLocale === 'ar' ? 'text-primary' : 'text-gray-600'}`}>
+        {currentLocale === 'en' ? t('english') : t('arabic')}
+      </span>
+      <Switch checked={currentLocale === 'ar'} onCheckedChange={changeLanguage} className="mr-2" />
     </div>
   )
 }

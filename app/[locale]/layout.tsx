@@ -4,6 +4,9 @@ import './globals.css'
 import StoreProvider from '@/store/StoreProvider'
 import { NextIntlClientProvider } from 'next-intl'
 import { getMessages } from 'next-intl/server'
+import { getServerSession } from 'next-auth'
+import ProviderSession from '@/providers/ProviderSession'
+import { Toaster } from 'react-hot-toast'
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -29,13 +32,17 @@ export default async function RootLayout({
   params: { locale: string }
 }>) {
   const messages = await getMessages()
+  const session = await getServerSession()
 
   return (
     <html lang={locale}>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <NextIntlClientProvider messages={messages}>
-          <StoreProvider>{children}</StoreProvider>
-        </NextIntlClientProvider>
+        <ProviderSession session={session}>
+          <NextIntlClientProvider messages={messages}>
+            <Toaster position="bottom-center" />
+            <StoreProvider>{children}</StoreProvider>
+          </NextIntlClientProvider>
+        </ProviderSession>
       </body>
     </html>
   )

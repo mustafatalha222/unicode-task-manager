@@ -1,13 +1,18 @@
 {
-  "english": "الإنجليزية",
-  "arabic": "العربية",
-  "Login": {
-    "login": "تسجيل الدخول"
-  },
-  "SignUp": {
-    "signup": "تسجيل"
-  },
-  "Dashboard": {
-    "Dashboard": "لوحة القيادة"
+  "name": "الاسم",
+  "email": "البريد الإلكتروني",
+  "password": "كلمة المرور",
+  "or": "أو",
+  "alreadyHaveAccount": "هل لديك حساب بالفعل؟",
+  "login": "تسجيل الدخول",
+  "dontHaveAccount": "لا تملك حسابًا؟",
+  "signup": "إنشاء حساب",
+  "Login": "تسجيل الدخول",
+  "submit": "إرسال",
+
+  "MainLayout": {
+    "task_management": "إدارة المهام",
+    "collaborative": "تعاوني",
+    "task_description": "قم بإدارة مهامك بفعالية باستخدام أداتنا التعاونية."
   }
 }

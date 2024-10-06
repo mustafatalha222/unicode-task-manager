@@ -1,19 +1,54 @@
+import { NextRequest } from 'next/server'
+import { withAuth } from 'next-auth/middleware'
 import createMiddleware from 'next-intl/middleware'
 import { routing } from './i18n/routing'
 
-export default createMiddleware(routing)
+const publicPages = ['/signup', '/login']
+
+const intlMiddleware = createMiddleware(routing)
+
+const authMiddleware = withAuth((req) => intlMiddleware(req), {
+  callbacks: {
+    authorized: ({ token }) => token != null,
+  },
+  pages: {
+    signIn: '/login',
+  },
+})
+
+export default function middleware(req: NextRequest) {
+  const publicPathnameRegex = RegExp(
+    `^(/(${routing.locales.join('|')}))?(${publicPages.flatMap((p) => (p === '/' ? ['', '/'] : p)).join('|')})/?$`,
+    'i'
+  )
+  const isPublicPage = publicPathnameRegex.test(req.nextUrl.pathname)
+
+  if (isPublicPage) {
+    return intlMiddleware(req)
+  } else {
+    return (authMiddleware as any)(req)
+  }
+}
 
 export const config = {
-  matcher: [
-    // Enable a redirect to a matching locale at the root
-    '/',
-
-    // Set a cookie to remember the previous locale for
-    // all requests that have a locale prefix
-    '/(ar|en)/:path*',
-
-    // Enable redirects that add missing locales
-    // (e.g. `/pathnames` -> `/en/pathnames`)
-    '/((?!_next|_vercel|.*\\..*).*)',
-  ],
+  // Skip all paths that should not be internationalized
+  matcher: ['/((?!api|_next|_vercel|.*\\..*).*)'],
 }
+
+// import createMiddleware from 'next-intl/middleware'
+// import { routing } from './i18n/routing'
+
+// export default createMiddleware(routing)
+
+// export const config = {
+//   matcher: [
+//     // Enable a redirect to a matching locale at the root
+//     '/',
+
+//     '/(ar|en)/:path*',
+
+//     // Enable redirects that add missing locales
+//     // (e.g. `/pathnames` -> `/en/pathnames`)
+//     '/((?!api|_next|_vercel|.*\\..*).*)',
+//   ],
+// }
