@@ -24,6 +24,11 @@ const SIDE_MENU: IElementSidebar[] = [
     icon: <MdGroups size={24} />,
   },
   {
+    link: '/teamMembers',
+    name: 'Team Members',
+    icon: <MdGroups size={24} />,
+  },
+  {
     link: '/tasks',
     name: 'Tasks',
     icon: <TiDocumentText size={20} />,

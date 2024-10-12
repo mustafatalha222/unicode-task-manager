@@ -9,8 +9,7 @@ import { IRequest } from '@/libApi/interfaces/Auth'
 const createTask = async (request: IRequest): Promise<NextResponse> => {
   try {
     // Parse the JSON data from the request
-    const data: ITaskDetail = await request.json()
-    const { title, description, assignedTo, priority, dueDate, status } = data
+    const { title, description, assignedTo, priority, dueDate, status } = (await request.json()) as Partial<ITaskDetail>
 
     const newTask = new Task({
       title,
@@ -40,9 +39,9 @@ const getTasks = async (request: IRequest): Promise<NextResponse> => {
 }
 
 // Get a single task by ID
-const getTaskById = async (request: IRequest, params: { id: string }): Promise<NextResponse> => {
-  const { id } = params
-  const task = await Task.findById(id)
+const getTaskById = async (request: IRequest): Promise<NextResponse> => {
+  const data: ITask = await request.json()
+  const task = await Task.findById(data._id)
 
   if (!task) return createResponse({ error: 'Task not found' }, null, API_STATUS.NOT_FOUND)
   return createResponse(task, null, API_STATUS.SUCCESS)
@@ -56,7 +55,7 @@ const updateTask = async (request: IRequest): Promise<NextResponse> => {
   const updatedTask = await Task.findByIdAndUpdate(
     _id,
     { title, description, assignedTo, priority, dueDate, status },
-    { new: true }
+    { new: true } // Return the updated document
   )
 
   if (!updatedTask) return createResponse({ error: 'Task not found' }, null, API_STATUS.NOT_FOUND)

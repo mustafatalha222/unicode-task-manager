@@ -9,9 +9,10 @@ interface FormSelectProps {
   name: string
   options: { value: string; label: string }[]
   required?: boolean
+  disabled?: boolean
 }
 
-const FormSelect: React.FC<FormSelectProps> = ({ label, name, options, required = true }) => {
+const FormSelect: React.FC<FormSelectProps> = ({ label, name, options, required = true, disabled = false }) => {
   const t = useTranslations()
   // Using Formik's useField hook
   const [field, meta, helpers] = useField(name)
@@ -25,7 +26,7 @@ const FormSelect: React.FC<FormSelectProps> = ({ label, name, options, required 
       <Label htmlFor={name}>{t(label)}</Label>
       {required && <span className="text-red-500">{` `}*</span>}
 
-      <Select {...field} value={field.value} onValueChange={handleChange}>
+      <Select {...field} value={field.value} onValueChange={handleChange} disabled={disabled}>
         <SelectTrigger>
           <SelectValue placeholder={t(label)} />
         </SelectTrigger>

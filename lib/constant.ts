@@ -3,4 +3,5 @@ export const TITLE_MAP: Record<string, string> = {
   '/users': 'Users',
   '/tasks': 'Tasks',
   '/profile': 'Profile',
+  '/teamMembers': 'Team Members',
 }

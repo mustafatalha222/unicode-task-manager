@@ -6,7 +6,8 @@ import { useTranslations } from 'next-intl'
 import FormSelect from '@/components/FormSelect'
 import useApi from '@/hooks/useApi'
 import { ITask, ITaskPriority, ITaskStatus } from '@/shared/interfaces/Task'
-import { IUser } from '../../users/interface'
+import { IUser } from '@/shared/interfaces/User'
+import { ITeamMemberPopulated } from '@/shared/interfaces/TeamMember'
 
 const initialValues = {
   title: '',
@@ -42,7 +43,7 @@ const validationSchema = Yup.object({
 const TaskForm: React.FC<ITaskFormProps> = ({ onSuccess, task }) => {
   const t = useTranslations()
   const { loading, request } = useApi('/api/task', false)
-  const { data } = useApi('/api/users')
+  const { data } = useApi('/api/teamMembers')
   const { data: users = [] } = data || {}
 
   // If task prop is provided, use its values for the form
@@ -81,7 +82,7 @@ const TaskForm: React.FC<ITaskFormProps> = ({ onSuccess, task }) => {
               <FormSelect
                 label={t('Assign To')}
                 name="assignedTo"
-                options={users.map((e: IUser) => ({ value: e._id, label: e.name }))}
+                options={users.map((e: ITeamMemberPopulated) => ({ value: e.user._id, label: e.user.name }))}
               />
               <Button disabled={loading} type="submit" className="w-full">
                 {task ? t('Update') : t('Create')}
@@ -93,7 +94,7 @@ const TaskForm: React.FC<ITaskFormProps> = ({ onSuccess, task }) => {
 
       {task?._id && (
         <Button className="w-80 mt-2" variant={'destructive'} disabled={loading} onClick={() => handleDelete()}>
-          Delete Task
+          {t('Delete Task ')}
         </Button>
       )}
     </>

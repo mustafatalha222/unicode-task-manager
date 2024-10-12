@@ -1,10 +1,10 @@
 'use client'
 import React from 'react'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import { IUser } from './interface'
 import { useTranslations } from 'next-intl'
 import { CustomSkeleton } from '@/components/ui/skeleton'
 import useApi from '@/hooks/useApi'
+import { IUser } from '@/shared/interfaces/User'
 
 const Users = () => {
   const { data, loading } = useApi('/api/users')
