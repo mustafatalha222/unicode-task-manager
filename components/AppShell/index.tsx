@@ -15,22 +15,22 @@ type SidebarDemoProps = {
 const SIDE_MENU: IElementSidebar[] = [
   {
     link: '/dashboard',
-    name: 'dashboard',
+    name: 'Dashboard',
     icon: <MdOutlineDashboardCustomize size={20} />,
   },
   {
     link: '/users',
-    name: 'users',
+    name: 'Users',
     icon: <MdGroups size={24} />,
   },
   {
     link: '/tasks',
-    name: 'tasks',
+    name: 'Tasks',
     icon: <TiDocumentText size={20} />,
   },
   {
     link: '/profile',
-    name: 'profile',
+    name: 'Profile',
     icon: <IoPersonOutline size={20} />,
   },
 ]

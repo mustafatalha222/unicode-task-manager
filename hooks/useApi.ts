@@ -26,7 +26,7 @@ const useApi = <T = any>(url: string, initialFetch: boolean = true): UseApiRespo
       if (!res.ok) {
         const errorMessage = await res.json()
         toast.error(t(errorMessage.error || errorMessage))
-        setError(errorMessage.error || t('requestFailed'))
+        setError(errorMessage.error || t('Failed to fetch data'))
         return
       }
 
@@ -61,12 +61,12 @@ const useApi = <T = any>(url: string, initialFetch: boolean = true): UseApiRespo
       if (!res.ok) {
         const errorMessage = await res.json()
         toast.error(t(errorMessage.error || errorMessage))
-        setError(errorMessage.error || 'requestFailed')
+        setError(errorMessage.error || 'Request failed')
         return null
       }
 
       const data = await res.json()
-      setData(data)
+      toast.success(t(data?.data?.message))
       return data
     } catch (error) {
       const errorMessage = (error as Error).message

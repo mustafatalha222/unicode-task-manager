@@ -11,7 +11,7 @@ function Header() {
   const [currentTitle, setcurrentTitle] = useState('')
   const pathname = usePathname()
   const { data } = useSession()
-  const t = useTranslations('Heading')
+  const t = useTranslations()
 
   useEffect(() => {
     setcurrentTitle(getTitleByPathname(pathname))

@@ -1,30 +1,24 @@
 import { API_STATUS } from '@/libApi/constant'
 import { createResponse, apiWrapper } from '@/libApi/helper'
-import { ITaskDetail } from '@/shared/interfaces/Task'
+import { ITask, ITaskDetail } from '@/shared/interfaces/Task'
 import Task from '@/libApi/models/Task'
 import { NextResponse } from 'next/server'
-import { getSession } from 'next-auth/react'
 import { IRequest } from '@/libApi/interfaces/Auth'
 
 // Create a new task
 const createTask = async (request: IRequest): Promise<NextResponse> => {
   try {
-    const session = await getSession({ req: { headers: { cookie: request.headers.get('cookie') || '' } } })
-    if (!session || !session.user) {
-      return createResponse(null, 'User not authenticated', API_STATUS.UNAUTHORIZED)
-    }
-
     // Parse the JSON data from the request
     const data: ITaskDetail = await request.json()
-    const { title, description, assignedTo, priority, dueDate } = data
-    const createdBy = request.user.id
+    const { title, description, assignedTo, priority, dueDate, status } = data
 
     const newTask = new Task({
       title,
       description,
       assignedTo,
-      createdBy,
+      createdBy: request.user.id,
       priority,
+      status,
       dueDate,
     })
     await newTask.save()
@@ -35,40 +29,46 @@ const createTask = async (request: IRequest): Promise<NextResponse> => {
   }
 }
 
-// Get all tasks
-const getTasks = async (): Promise<NextResponse> => {
-  const tasks = await Task.find()
+// Get all tasks belongs to user
+const getTasks = async (request: IRequest): Promise<NextResponse> => {
+  const userId = request.user.id
+  // Sort by decending date
+  const tasks = await Task.find({
+    $or: [{ createdBy: userId }, { assignTo: userId }],
+  }).sort({ updatedAt: -1 })
   return createResponse(tasks, null, API_STATUS.SUCCESS)
 }
 
-// Update a task
-const updateTask = async (request: IRequest, { params }: { params: { id: string } }): Promise<NextResponse> => {
+// Get a single task by ID
+const getTaskById = async (request: IRequest, params: { id: string }): Promise<NextResponse> => {
   const { id } = params
-  const data: ITaskDetail = await request.json()
-  const { title, description, assignedTo, priority, dueDate } = data
+  const task = await Task.findById(id)
+
+  if (!task) return createResponse({ error: 'Task not found' }, null, API_STATUS.NOT_FOUND)
+  return createResponse(task, null, API_STATUS.SUCCESS)
+}
+
+// Update a task
+const updateTask = async (request: IRequest): Promise<NextResponse> => {
+  const data: ITask = await request.json()
+  const { title, description, assignedTo, priority, dueDate, _id, status } = data
 
   const updatedTask = await Task.findByIdAndUpdate(
-    id,
-    { title, description, assignedTo, priority, dueDate },
+    _id,
+    { title, description, assignedTo, priority, dueDate, status },
     { new: true }
   )
 
-  if (!updatedTask) {
-    return createResponse({ error: 'Task not found' }, null, API_STATUS.NOT_FOUND)
-  }
-
+  if (!updatedTask) return createResponse({ error: 'Task not found' }, null, API_STATUS.NOT_FOUND)
   return createResponse({ message: 'Task updated successfully', task: updatedTask }, null, API_STATUS.SUCCESS)
 }
 
 // Delete a task
-const deleteTask = async (request: IRequest, { params }: { params: { id: string } }): Promise<NextResponse> => {
-  const { id } = params
+const deleteTask = async (request: IRequest): Promise<NextResponse> => {
+  const data: ITask = await request.json()
+  const deletedTask = await Task.findByIdAndDelete(data._id)
 
-  const deletedTask = await Task.findByIdAndDelete(id)
-
-  if (!deletedTask) {
-    return createResponse({ error: 'Task not found' }, null, API_STATUS.NOT_FOUND)
-  }
+  if (!deletedTask) return createResponse({ error: 'Task not found' }, null, API_STATUS.NOT_FOUND)
 
   return createResponse({ message: 'Task deleted successfully' }, null, API_STATUS.SUCCESS)
 }
@@ -76,5 +76,6 @@ const deleteTask = async (request: IRequest, { params }: { params: { id: string 
 // Export API functions based on HTTP method
 export const POST = apiWrapper(createTask)
 export const GET = apiWrapper(getTasks)
+export const GET_SINGLE = apiWrapper(getTaskById)
 export const PUT = apiWrapper(updateTask)
 export const DELETE = apiWrapper(deleteTask)

@@ -27,7 +27,7 @@ const FormSelect: React.FC<FormSelectProps> = ({ label, name, options, required 
 
       <Select {...field} value={field.value} onValueChange={handleChange}>
         <SelectTrigger>
-          <SelectValue placeholder={label} />
+          <SelectValue placeholder={t(label)} />
         </SelectTrigger>
         <SelectContent>
           {options.map((option) => (

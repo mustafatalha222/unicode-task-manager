@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
-import languageReducer from './slices/languageSlice'
+import tasksReducer from './slices/tasksSlice'
 
 export const store = () => {
   return configureStore({
     reducer: {
-      language: languageReducer,
+      tasks: tasksReducer,
     },
   })
 }

@@ -24,7 +24,7 @@ const Logout = () => {
     <>
       <ElementSidebar
         handleClick={handleClick}
-        name="logout"
+        name="Logout"
         link={''}
         selectable={false}
         icon={<AiOutlineLogout size={20} className="-rotate-90" />}
@@ -33,7 +33,7 @@ const Logout = () => {
       <CustomDialog
         open={openDialog}
         setOpen={setopenDialog}
-        content="confirmLogout"
+        content="Confirm Logout"
         successBtn="Confirm"
         cancelBtn="Cancel"
         handleSuccess={handleSuccess}

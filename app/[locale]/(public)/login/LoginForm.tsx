@@ -16,8 +16,8 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit, loading, onGithubSignIn
   const t = useTranslations()
 
   const validationSchema = Yup.object({
-    email: Yup.string().email().required().label(t('email')),
-    password: Yup.string().min(6).required().label(t('password')),
+    email: Yup.string().email().required().label(t('Email')),
+    password: Yup.string().min(6).required().label(t('Password')),
   })
 
   return (
@@ -27,10 +27,10 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit, loading, onGithubSignIn
           <div className="w-96">
             <h2 className="text-2xl font-bold text-center mb-4">{t('Login')}</h2>
             <form onSubmit={handleSubmit}>
-              <FormInput label={'email'} name="email" type="email" />
-              <FormInput label={'password'} name="password" type="password" />
+              <FormInput label={'Email'} name="email" type="email" />
+              <FormInput label={'Password'} name="password" type="password" />
               <Button type="submit" className="w-full" disabled={loading}>
-                {t('submit')}
+                {t('Submit')}
               </Button>
             </form>
 
@@ -49,7 +49,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit, loading, onGithubSignIn
                   clipRule="evenodd"
                 />
               </svg>
-              <span className="text-sm font-semibold leading-6">GitHub</span>
+              <span className="text-sm font-semibold leading-6">{t('GitHub')}</span>
             </button>
 
             <div className="mt-4 text-center">
@@ -58,9 +58,9 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit, loading, onGithubSignIn
 
             <footer className="mt-2 text-center">
               <span className="text-primary font-medium">
-                {t('dontHaveAccount')}{' '}
+                {t('Dont have an account?')}{' '}
                 <Link href="/signup" className="text-blue-600 hover:underline">
-                  {t('signup')}
+                  {t('Sign Up')}
                 </Link>
               </span>
             </footer>

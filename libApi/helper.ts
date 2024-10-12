@@ -29,9 +29,10 @@ export const apiWrapper = (handler: (request: IRequest, params?: any) => Promise
       }
 
       return await handler(request, params) // Pass params to the handler
-    } catch (_) {
+    } catch (error) {
+      console.error(JSON.stringify(error, null, 2))
       // Handle server errors
-      return createResponse(null, 'Database connection error', API_STATUS.SERVER_ERROR)
+      return createResponse(null, 'Something Went Wrong', API_STATUS.SERVER_ERROR)
     }
   }
 }

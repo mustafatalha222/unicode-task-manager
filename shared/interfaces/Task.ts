@@ -13,6 +13,7 @@ export interface ITaskDetail {
 export type ITask = Omit<ITaskDetail, 'assignedTo' | 'createdBy'> & {
   assignedTo: string
   createdBy?: string
+  _id?: string
 }
 
 export enum ITaskStatus {

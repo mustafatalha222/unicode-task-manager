@@ -5,7 +5,7 @@ import { memo } from 'react'
 import { IElementSidebar } from './interface'
 
 const ElementSidebar = ({ icon, link, name, selectable = true, handleClick }: IElementSidebar) => {
-  const t = useTranslations('Heading')
+  const t = useTranslations()
   const pathname = usePathname()
   const isSelected = selectable && pathname.startsWith(link)
 

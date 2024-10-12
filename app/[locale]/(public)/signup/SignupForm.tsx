@@ -16,9 +16,9 @@ const SignupForm: React.FC<SignupFormProps> = ({ onSubmit, loading }) => {
   const t = useTranslations()
 
   const validationSchema = Yup.object({
-    name: Yup.string().min(3).max(30).required().label(t('name')),
-    email: Yup.string().email().required().label(t('email')),
-    password: Yup.string().min(6).required().label(t('password')),
+    name: Yup.string().min(3).max(30).required().label(t('Name')),
+    email: Yup.string().email().required().label(t('Email')),
+    password: Yup.string().min(6).required().label(t('Password')),
   })
 
   return (
@@ -28,11 +28,11 @@ const SignupForm: React.FC<SignupFormProps> = ({ onSubmit, loading }) => {
           <div className="w-96">
             <h2 className="text-2xl font-bold text-center mb-4">{t('signup')}</h2>
             <form onSubmit={handleSubmit}>
-              <FormInput label={'name'} name="name" />
-              <FormInput label={'email'} name="email" type="email" />
-              <FormInput label={'password'} name="password" type="password" />
+              <FormInput label={'Name'} name="name" />
+              <FormInput label={'Email'} name="email" type="email" />
+              <FormInput label={'Password'} name="password" type="password" />
               <Button type="submit" className="w-full" disabled={loading}>
-                {t('submit')}
+                {t('Submit')}
               </Button>
             </form>
             <div className="mt-4 text-center">
@@ -40,9 +40,9 @@ const SignupForm: React.FC<SignupFormProps> = ({ onSubmit, loading }) => {
             </div>
             <div className="mt-2 text-center">
               <span className="text-primary font-medium">
-                {t('alreadyHaveAccount')}{' '}
+                {t('Already have an account?')}{' '}
                 <Link href="/login" className="text-blue-600 hover:underline">
-                  {t('login')}
+                  {t('Login')}
                 </Link>
               </span>
             </div>

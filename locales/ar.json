@@ -1,37 +1,55 @@
 {
   "Lang": {
-    "english": "الإنجليزية",
-    "arabic": "العربية"
+    "English": "English",
+    "Arabic": "Arabic"
   },
 
   "MainLayout": {
-    "task_management": "إدارة المهام",
-    "collaborative": "تعاونية",
-    "task_description": "قم بإدارة مهامك بفعالية باستخدام أداتنا التعاونية."
+    "Task Management": "Task Management",
+    "Collaborative": "Collaborative",
+    "Task Description": "Manage your tasks effectively with our collaborative tool."
   },
 
-  "name": "الاسم",
-  "email": "البريد الإلكتروني",
-  "password": "كلمة المرور",
-  "or": "أو",
-  "alreadyHaveAccount": "لديك حساب بالفعل؟",
-  "login": "تسجيل الدخول",
-  "dontHaveAccount": "ليس لديك حساب؟",
-  "signup": "إنشاء حساب",
-  "Login": "تسجيل الدخول",
-  "submit": "إرسال",
+  "Name": "Name",
+  "Email": "Email",
+  "Password": "Password",
+  "or": "or",
+  "Already have an account?": "Already have an account?",
+  "Login": "Login",
+  "Dont have an account?": "Don't have an account?",
+  "Sign Up": "Sign Up",
+  "Submit": "Submit",
+  "GitHub": "GitHub",
 
-  "Heading": {
-    "dashboard": "لوحة التحكم",
-    "users": "المستخدمون",
-    "tasks": "المهام",
-    "profile": "الملف الشخصي",
-    "logout": "تسجيل الخروج"
-  },
-  "confirmLogout": "هل أنت متأكد أنك تريد تسجيل الخروج؟",
+  "Dashboard": "Dashboard",
+  "Users": "Users",
+  "Tasks": "Tasks",
+  "Profile": "Profile",
+  "Logout": "Logout",
 
-  "authErrorMessage": "فشل تسجيل الدخول!",
-  "User successfully registered": "تم تسجيل المستخدم بنجاح",
-  "Email is already in use": "البريد الإلكتروني مستخدم بالفعل",
-  "Internal Server Error": "خطأ في الخادم الداخلي"
+  "All Users": "All Users",
+
+  "Create": "Create",
+  "Update": "Update",
+
+  "Title": "Title",
+  "Description": "Description",
+  "Assign To": "Assign To",
+  "Status": "Status",
+  "Priority": "Priority",
+  "Pending": "Pending",
+  "Todo": "Todo",
+  "In Progress": "In Progress",
+  "Completed": "Completed",
+  "Create Task": "Create Task",
+
+  "No Data Found": "No Data Found",
+  "Confirm Logout": "Are you sure you want to logout!",
+  "Failed to fetch data": "Failed to fetch data",
+  "Request failed": "Request failed",
+
+  "Auth Error Message": "Sign-in failed!",
+  "User successfully registered": "User successfully registered",
+  "Email is already in use": "Email is already in use",
+  "Internal Server Error": "Internal Server Error"
 }

@@ -1,42 +1,55 @@
 {
   "Lang": {
-    "english": "English",
-    "arabic": "Arabic"
+    "English": "English",
+    "Arabic": "Arabic"
   },
 
   "MainLayout": {
-    "task_management": "Task Management",
-    "collaborative": "Collaborative",
-    "task_description": "Manage your tasks effectively with our collaborative tool."
+    "Task Management": "Task Management",
+    "Collaborative": "Collaborative",
+    "Task Description": "Manage your tasks effectively with our collaborative tool."
   },
 
-  "name": "Name",
-  "email": "Email",
-  "password": "Password",
+  "Name": "Name",
+  "Email": "Email",
+  "Password": "Password",
   "or": "or",
-  "alreadyHaveAccount": "Already have an account?",
-  "login": "Login",
-  "dontHaveAccount": "Don't have an account?",
-  "signup": "Sign Up",
+  "Already have an account?": "Already have an account?",
   "Login": "Login",
-  "submit": "Submit",
+  "Dont have an account?": "Don't have an account?",
+  "Sign Up": "Sign Up",
+  "Submit": "Submit",
+  "GitHub": "GitHub",
 
-  "Heading": {
-    "dashboard": "Dashboard",
-    "users": "Users",
-    "tasks": "Tasks",
-    "profile": "Profile",
-    "logout": "Logout"
-  },
-  "Users": {
-    "allUsers": "All Users"
-  },
-  "noDataFound": "No Data Found",
-  "confirmLogout": "Are you sure you want to logout!",
-  "failedFetch": "Failed to fetch data",
-  "requestFailed": "'Request failed'",
+  "Dashboard": "Dashboard",
+  "Users": "Users",
+  "Tasks": "Tasks",
+  "Profile": "Profile",
+  "Logout": "Logout",
 
-  "authErrorMessage": "Sign-in failed!",
+  "All Users": "All Users",
+
+  "Create": "Create",
+  "Update": "Update",
+
+  "Title": "Title",
+  "Description": "Description",
+  "Assign To": "Assign To",
+  "Status": "Status",
+  "Priority": "Priority",
+  "Pending": "Pending",
+  "Todo": "Todo",
+  "In Progress": "In Progress",
+  "Completed": "Completed",
+  "Create Task": "Create Task",
+  "Edit Task": "Edit Task",
+
+  "No Data Found": "No Data Found",
+  "Confirm Logout": "Are you sure you want to logout!",
+  "Failed to fetch data": "Failed to fetch data",
+  "Request failed": "Request failed",
+
+  "Auth Error Message": "Sign-in failed!",
   "User successfully registered": "User successfully registered",
   "Email is already in use": "Email is already in use",
   "Internal Server Error": "Internal Server Error"

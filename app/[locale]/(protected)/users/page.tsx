@@ -8,11 +8,11 @@ import useApi from '@/hooks/useApi'
 
 const Users = () => {
   const { data, loading } = useApi('/api/users')
-  const t = useTranslations('Users')
+  const t = useTranslations()
 
   return (
     <div className="p-4 max-w-md mx-auto">
-      <h2 className="text-2xl font-semibold text-center mb-4">{t('allUsers')}</h2>
+      <h2 className="text-2xl font-semibold text-center mb-4">{t('All Users')}</h2>
 
       <CustomSkeleton className="h-16" loading={loading} length={data?.data?.length} />
       <ul className="space-y-4">
