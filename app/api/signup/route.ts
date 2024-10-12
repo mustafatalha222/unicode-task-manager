@@ -1,6 +1,6 @@
-import { API_STATUS, saltRounds } from '@/db/constant'
-import User from '@/db/models/User'
-import { createResponse, withDb } from '@/db/helper'
+import { API_STATUS, saltRounds } from '@/libApi/constant'
+import User from '@/libApi/models/User'
+import { createResponse, apiWrapper } from '@/libApi/helper'
 import bcrypt from 'bcrypt'
 import { NextResponse } from 'next/server'
 
@@ -36,4 +36,4 @@ const registerUser = async (request: Request): Promise<NextResponse> => {
 }
 
 // Exporting the POST method with database connection handling
-export const POST = withDb(registerUser)
+export const POST = apiWrapper(registerUser, false)

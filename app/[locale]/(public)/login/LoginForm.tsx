@@ -27,8 +27,8 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit, loading, onGithubSignIn
           <div className="w-96">
             <h2 className="text-2xl font-bold text-center mb-4">{t('Login')}</h2>
             <form onSubmit={handleSubmit}>
-              <FormInput label={t('email')} name="email" type="email" />
-              <FormInput label={t('password')} name="password" type="password" />
+              <FormInput label={'email'} name="email" type="email" />
+              <FormInput label={'password'} name="password" type="password" />
               <Button type="submit" className="w-full" disabled={loading}>
                 {t('submit')}
               </Button>

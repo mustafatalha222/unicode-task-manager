@@ -2,7 +2,7 @@
 import { memo, useState } from 'react'
 import { AiOutlineLogout } from 'react-icons/ai'
 import ElementSidebar from './ElementSidebar'
-import AlertDialog from '../AlertDialog'
+import CustomDialog from '../CustomDialog'
 import { useRouter } from '@/i18n/routing'
 import { signOut } from 'next-auth/react'
 
@@ -30,15 +30,15 @@ const Logout = () => {
         icon={<AiOutlineLogout size={20} className="-rotate-90" />}
       />
 
-      <AlertDialog
+      <CustomDialog
         open={openDialog}
         setOpen={setopenDialog}
-        content="confirm_logout"
+        content="confirmLogout"
         successBtn="Confirm"
         cancelBtn="Cancel"
         handleSuccess={handleSuccess}
         successIcon={false}
-      ></AlertDialog>
+      ></CustomDialog>
     </>
   )
 }

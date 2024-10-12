@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button'
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog'
 import { FaCheck, FaExclamation } from 'react-icons/fa6'
 import { useTranslations } from 'next-intl'
+import { CardHeader, CardTitle } from './ui/card'
 
 type DialogCloseButtonProps = {
   cancelBtn?: string
@@ -13,13 +14,14 @@ type DialogCloseButtonProps = {
   content: string | ReactNode
   children?: React.ReactNode
   open: boolean
+  title?: string
   setOpen: (bool: boolean) => void
   successIcon?: boolean
   hideIcon?: boolean
   showCloseIcon?: boolean
 }
 
-const AlertDialog: React.FC<DialogCloseButtonProps> = ({
+const CustomDialog: React.FC<DialogCloseButtonProps> = ({
   cancelBtn,
   handleCancel,
   successBtn,
@@ -27,6 +29,7 @@ const AlertDialog: React.FC<DialogCloseButtonProps> = ({
   content,
   children,
   open,
+  title,
   successIcon = true,
   hideIcon = false,
   showCloseIcon = false,
@@ -48,6 +51,12 @@ const AlertDialog: React.FC<DialogCloseButtonProps> = ({
     >
       {children && <DialogTrigger asChild>{children}</DialogTrigger>}
       <DialogContent className="sm:max-w-lg items-center" showCloseIcon={showCloseIcon}>
+        {title && (
+          <CardHeader className="justify-between items-center p-0 m-0">
+            <CardTitle>{title}</CardTitle>
+          </CardHeader>
+        )}
+
         <div className={`flex flex-col justify-between items-center ${!hideIcon ? 'mt-4' : ''}`}>
           {!hideIcon && (
             <Avatar>
@@ -82,4 +91,4 @@ const AlertDialog: React.FC<DialogCloseButtonProps> = ({
   )
 }
 
-export default AlertDialog
+export default CustomDialog

@@ -28,7 +28,7 @@
     "profile": "الملف الشخصي",
     "logout": "تسجيل الخروج"
   },
-  "confirm_logout": "هل أنت متأكد أنك تريد تسجيل الخروج؟",
+  "confirmLogout": "هل أنت متأكد أنك تريد تسجيل الخروج؟",
 
   "authErrorMessage": "فشل تسجيل الدخول!",
   "User successfully registered": "تم تسجيل المستخدم بنجاح",

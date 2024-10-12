@@ -28,9 +28,9 @@ const SignupForm: React.FC<SignupFormProps> = ({ onSubmit, loading }) => {
           <div className="w-96">
             <h2 className="text-2xl font-bold text-center mb-4">{t('signup')}</h2>
             <form onSubmit={handleSubmit}>
-              <FormInput label={t('name')} name="name" />
-              <FormInput label={t('email')} name="email" type="email" />
-              <FormInput label={t('password')} name="password" type="password" />
+              <FormInput label={'name'} name="name" />
+              <FormInput label={'email'} name="email" type="email" />
+              <FormInput label={'password'} name="password" type="password" />
               <Button type="submit" className="w-full" disabled={loading}>
                 {t('submit')}
               </Button>

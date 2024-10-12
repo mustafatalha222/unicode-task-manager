@@ -1,26 +1,27 @@
 import { useField } from 'formik'
 import ErrorMessage from '@/components/ErrorMessage'
+import { useTranslations } from 'next-intl'
+import { Label } from './ui/label'
+import { Input } from './ui/input'
 
 interface FormInputProps {
   label: string
   name: string
   type?: string
+  required?: boolean
 }
 
-const FormInput: React.FC<FormInputProps> = ({ label, name, type = 'text' }) => {
+const FormInput: React.FC<FormInputProps> = ({ label, name, type = 'text', required = true }) => {
   // Using Formik's useField hook
   const [field, meta] = useField(name)
+  const t = useTranslations()
 
   return (
     <div className="mb-4">
-      <label className="block text-gray-700" htmlFor={name}>
-        {label}
-      </label>
-      <input
-        {...field} // Spread field props (name, value, onChange, onBlur)
-        type={type}
-        className={`border rounded-md w-full py-2 px-3 mt-1 ${meta.touched && meta.error ? 'border-red-500' : ''}`}
-      />
+      <Label htmlFor={name}>{t(label)}</Label>
+      {required && <span className="text-red-500">{` `}*</span>}
+
+      <Input type={type} {...field} placeholder={t(label)} />
       {/* Show error message if the field has been touched and there's an error */}
       {meta.touched && meta.error && <ErrorMessage error={meta.error} />}
     </div>

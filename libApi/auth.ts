@@ -3,8 +3,9 @@ import GithubProvider from 'next-auth/providers/github'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import GoogleProvider from 'next-auth/providers/google'
 import bcrypt from 'bcrypt'
-import User from '@/db/models/User'
-import connect from '@/db/connect'
+import User from '@/libApi/models/User'
+import connect from '@/libApi/connect'
+import { IAuthUser, ISession } from './interfaces/Auth'
 
 const createUser = async (userData: AuthUser) => {
   const newUser = new User({
@@ -15,10 +16,6 @@ const createUser = async (userData: AuthUser) => {
 }
 
 export const authOptions: any = {
-  session: {
-    strategy: 'jwt',
-    maxAge: 1 * 24 * 60 * 60, // 1 day
-  },
   providers: [
     CredentialsProvider({
       id: 'credentials',
@@ -51,7 +48,7 @@ export const authOptions: any = {
     // ...add more providers here
   ],
   callbacks: {
-    async signIn({ user, account }: { user: AuthUser; account: Account }) {
+    async signIn({ user, account }: { user: IAuthUser; account: Account }) {
       if (account?.provider === 'credentials') {
         return true
       }
@@ -67,6 +64,12 @@ export const authOptions: any = {
         console.error('Sign in error:', err)
         return false
       }
+    },
+    async session({ session, token }: { session: ISession; token: IAuthUser & { sub?: string } }) {
+      if (token) {
+        session.user.id = token.sub as string
+      }
+      return session
     },
   },
 }

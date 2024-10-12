@@ -6,7 +6,7 @@ import { useRouter } from '@/i18n/routing'
 
 const SignupPage = () => {
   const router = useRouter()
-  const { request, loading } = useApi('/api/signup')
+  const { request, loading } = useApi('/api/signup', false)
 
   const handleSubmit = async (values: ISignUpValues) => {
     const data = await request('POST', values)

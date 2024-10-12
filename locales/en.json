@@ -28,7 +28,13 @@
     "profile": "Profile",
     "logout": "Logout"
   },
-  "confirm_logout": "Are you sure you want to logout!",
+  "Users": {
+    "allUsers": "All Users"
+  },
+  "noDataFound": "No Data Found",
+  "confirmLogout": "Are you sure you want to logout!",
+  "failedFetch": "Failed to fetch data",
+  "requestFailed": "'Request failed'",
 
   "authErrorMessage": "Sign-in failed!",
   "User successfully registered": "User successfully registered",

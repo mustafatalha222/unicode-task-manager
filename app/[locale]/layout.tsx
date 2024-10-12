@@ -40,7 +40,7 @@ export default async function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <ProviderSession session={session}>
           <NextIntlClientProvider messages={messages}>
-            <Toaster position="bottom-center" />
+            <Toaster position="top-center" />
             <StoreProvider>{children}</StoreProvider>
           </NextIntlClientProvider>
         </ProviderSession>
