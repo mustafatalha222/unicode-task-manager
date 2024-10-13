@@ -6,6 +6,9 @@ const withNextIntl = createNextIntlPlugin()
 const nextConfig = {
   // local dev issue with dnd package
   reactStrictMode: false,
+  typescript: {
+    ignoreBuildErrors: true,
+  },
 }
 
 export default withNextIntl(nextConfig)

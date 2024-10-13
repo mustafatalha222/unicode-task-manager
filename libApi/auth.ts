@@ -1,10 +1,9 @@
-import { Account, User as AuthUser } from 'next-auth'
+import { User as AuthUser, NextAuthOptions } from 'next-auth'
 import GithubProvider from 'next-auth/providers/github'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import bcrypt from 'bcrypt'
 import User from '@/libApi/models/User'
 import connect from '@/libApi/connect'
-import { IAuthUser, ISession } from './interfaces/Auth'
 import mongoose from 'mongoose'
 
 const createUser = async (userData: AuthUser, provider: string, providerId: string) => {
@@ -17,7 +16,7 @@ const createUser = async (userData: AuthUser, provider: string, providerId: stri
   }).save()
 }
 
-export const authOptions: any = {
+export const auth: NextAuthOptions = {
   providers: [
     CredentialsProvider({
       id: 'credentials',
@@ -26,11 +25,11 @@ export const authOptions: any = {
         email: { label: 'Email', type: 'text' },
         password: { label: 'Password', type: 'password' },
       },
-      async authorize(credentials: any) {
+      async authorize(credentials) {
         await connect()
         try {
-          const user = await User.findOne({ email: credentials.email })
-          if (user && (await bcrypt.compare(credentials.password, user.password))) {
+          const user = await User.findOne({ email: credentials?.email })
+          if (user && (await bcrypt.compare(credentials!.password, user.password))) {
             return user
           }
         } catch (err) {
@@ -50,15 +49,14 @@ export const authOptions: any = {
     // ...add more providers here
   ],
   callbacks: {
-    async signIn({ user, account, profile }: { user: IAuthUser; account: Account; profile: any }) {
-      if (account?.provider === 'credentials') {
+    async signIn({ user, account, profile }) {
+      if (account?.provider === 'credentials' || !profile || !account) {
         return true
       }
       await connect()
 
       try {
         // Check if a user exists with the providerId (sub) from the OAuth provider
-        console.log(profile.id, ' profile.id', account.provider)
         const existingUser = await User.findOne({
           providerId: profile.id,
           provider: account.provider,
@@ -81,8 +79,10 @@ export const authOptions: any = {
         return false
       }
     },
-    async session({ session, token }: { session: ISession; token: IAuthUser & { sub?: string } }) {
+    async session({ session, token }) {
       // Check if the `sub` is a valid Mongoose ObjectId
+      if (!session.user) return session
+
       if (mongoose.Types.ObjectId.isValid(token.sub || '')) {
         session.user.id = token.sub as string
       } else if (token.email) {

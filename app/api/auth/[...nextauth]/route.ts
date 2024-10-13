@@ -1,5 +1,5 @@
-import { authOptions } from '@/libApi/auth'
+import { auth } from '@/libApi/auth'
 import NextAuth from 'next-auth'
 
-export const handler = NextAuth(authOptions)
+const handler = NextAuth(auth)
 export { handler as GET, handler as POST }
