@@ -1,8 +1,9 @@
 import { NextResponse } from 'next/server'
 import connect from './connect'
-import { API_STATUS } from './constant'
+import { API_STATUS, saltRounds } from './constant'
 import { authOptions } from './auth'
 import { getServerSession } from 'next-auth'
+import bcrypt from 'bcrypt'
 import { IRequest, ISession } from './interfaces/Auth'
 
 export const apiWrapper = (handler: (request: IRequest, params?: any) => Promise<NextResponse>, checkAuth = true) => {
@@ -53,4 +54,9 @@ export const createResponse = <T = unknown>(
     error: error || undefined,
   }
   return NextResponse.json(response, { status })
+}
+
+// Function to hash the password
+export const hashPassword = async (password: string) => {
+  return await bcrypt.hash(password, saltRounds)
 }

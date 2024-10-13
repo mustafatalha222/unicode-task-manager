@@ -22,7 +22,7 @@ const Tasks = () => {
     <>
       <TaskDialog refresh={refresh} />
       <Button onClick={toggleDialog}>{t('Add Team Member')}</Button>
-      <CustomSkeleton className="h-32" loading={loading} length={members.length} />
+      <CustomSkeleton className="h-32 mt-2" loading={loading} length={members.length} />
 
       {!!members.length && <MyMembers members={members} />}
     </>

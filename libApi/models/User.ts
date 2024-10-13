@@ -1,9 +1,5 @@
 import { Schema, model, models } from 'mongoose'
-export interface IUser {
-  email: string
-  password?: string
-  name: string
-}
+
 const UserSchema = new Schema(
   {
     email: {
@@ -12,6 +8,15 @@ const UserSchema = new Schema(
       required: true,
     },
     password: {
+      type: String,
+    },
+    provider: {
+      type: String,
+    },
+    providerId: {
+      type: String,
+    },
+    image: {
       type: String,
     },
     name: {

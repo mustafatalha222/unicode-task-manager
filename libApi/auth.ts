@@ -1,18 +1,20 @@
 import { Account, User as AuthUser } from 'next-auth'
 import GithubProvider from 'next-auth/providers/github'
 import CredentialsProvider from 'next-auth/providers/credentials'
-import GoogleProvider from 'next-auth/providers/google'
 import bcrypt from 'bcrypt'
 import User from '@/libApi/models/User'
 import connect from '@/libApi/connect'
 import { IAuthUser, ISession } from './interfaces/Auth'
+import mongoose from 'mongoose'
 
-const createUser = async (userData: AuthUser) => {
-  const newUser = new User({
+const createUser = async (userData: AuthUser, provider: string, providerId: string) => {
+  await new User({
     email: userData.email,
     name: userData.name,
-  })
-  await newUser.save()
+    image: userData.image,
+    provider,
+    providerId,
+  }).save()
 }
 
 export const authOptions: any = {
@@ -41,33 +43,52 @@ export const authOptions: any = {
       clientId: process.env.GITHUB_ID ?? '',
       clientSecret: process.env.GITHUB_SECRET ?? '',
     }),
-    GoogleProvider({
-      clientId: process.env.GOOGLE_ID ?? '',
-      clientSecret: process.env.GOOGLE_SECRET ?? '',
-    }),
+    // GoogleProvider({
+    //   clientId: process.env.GOOGLE_ID ?? '',
+    //   clientSecret: process.env.GOOGLE_SECRET ?? '',
+    // }),
     // ...add more providers here
   ],
   callbacks: {
-    async signIn({ user, account }: { user: IAuthUser; account: Account }) {
+    async signIn({ user, account, profile }: { user: IAuthUser; account: Account; profile: any }) {
       if (account?.provider === 'credentials') {
         return true
       }
-
       await connect()
+
       try {
-        const existingUser = await User.findOne({ email: user.email })
+        // Check if a user exists with the providerId (sub) from the OAuth provider
+        console.log(profile.id, ' profile.id', account.provider)
+        const existingUser = await User.findOne({
+          providerId: profile.id,
+          provider: account.provider,
+        })
+
         if (!existingUser) {
-          await createUser(user)
+          const emailUser = await User.findOne({ email: user.email })
+          if (!emailUser) {
+            // If no user found by email, create a new user with providerId
+            await createUser(user, account.provider, profile.id)
+          } else {
+            // If user found by email but not providerId, update user with providerId
+            emailUser.providerId = profile.id
+            emailUser.provider = account.provider
+            await emailUser.save()
+          }
         }
         return true
       } catch (err) {
-        console.error('Sign in error:', err)
         return false
       }
     },
     async session({ session, token }: { session: ISession; token: IAuthUser & { sub?: string } }) {
-      if (token) {
+      // Check if the `sub` is a valid Mongoose ObjectId
+      if (mongoose.Types.ObjectId.isValid(token.sub || '')) {
         session.user.id = token.sub as string
+      } else if (token.email) {
+        const user = await User.findOne({ email: token.email, providerId: token.sub })
+
+        if (user) session.user.id = user._id.toString()
       }
       return session
     },

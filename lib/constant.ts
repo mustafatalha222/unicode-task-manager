@@ -5,3 +5,5 @@ export const TITLE_MAP: Record<string, string> = {
   '/profile': 'Profile',
   '/teamMembers': 'Team Members',
 }
+
+export const AVATAR_IMAGE = 'https://github.com/shadcn.png'

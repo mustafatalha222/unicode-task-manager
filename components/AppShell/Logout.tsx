@@ -16,8 +16,8 @@ const Logout = () => {
 
   const handleSuccess = () => {
     signOut()
-    setopenDialog(false)
     router.push('/')
+    setopenDialog(false)
   }
 
   return (

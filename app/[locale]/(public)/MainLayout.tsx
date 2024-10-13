@@ -22,7 +22,7 @@ export default function MainLayout({ children }: IMainLayout) {
       <section className="flex md:flex-row justify-evenly w-full">
         <aside className="hidden md:flex mt-20 flex-col items-start text-left">
           <h1 className="my-2 text-4xl font-bold text-primary">{t('Collaborative')}</h1>
-          <h1 className="my-2 text-4xl font-bold text-primary">{t('task_management')}</h1>
+          <h1 className="my-2 text-4xl font-bold text-primary">{t('Task Management')}</h1>
           <p className="my-5 mx-2 text-lg font-medium text-gray-500">{t('Task Description')}</p>
         </aside>
 

@@ -6,7 +6,6 @@ import { useTranslations } from 'next-intl'
 import FormSelect from '@/components/FormSelect'
 import useApi from '@/hooks/useApi'
 import { ITask, ITaskPriority, ITaskStatus } from '@/shared/interfaces/Task'
-import { IUser } from '@/shared/interfaces/User'
 import { ITeamMemberPopulated } from '@/shared/interfaces/TeamMember'
 
 const initialValues = {

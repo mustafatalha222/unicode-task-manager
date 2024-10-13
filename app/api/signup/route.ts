@@ -1,18 +1,14 @@
-import { API_STATUS, saltRounds } from '@/libApi/constant'
+import { API_STATUS } from '@/libApi/constant'
 import User from '@/libApi/models/User'
-import { createResponse, apiWrapper } from '@/libApi/helper'
-import bcrypt from 'bcrypt'
+import { createResponse, apiWrapper, hashPassword } from '@/libApi/helper'
+
 import { NextResponse } from 'next/server'
 
 interface UserRegistrationRequest {
   name: string
   email: string
   password: string
-}
-
-// Function to hash the password
-export const hashPassword = async (password: string) => {
-  return await bcrypt.hash(password, saltRounds)
+  provider?: string
 }
 
 const registerUser = async (request: Request): Promise<NextResponse> => {
@@ -25,13 +21,11 @@ const registerUser = async (request: Request): Promise<NextResponse> => {
 
   // Hash password and create new user
   const hashedPassword = await hashPassword(password)
-  const newUser = new User({
+  await new User({
     name,
     email,
     password: hashedPassword,
-  })
-
-  await newUser.save()
+  }).save()
   return createResponse({ message: 'User successfully registered' }, null, API_STATUS.SUCCESS)
 }
 
