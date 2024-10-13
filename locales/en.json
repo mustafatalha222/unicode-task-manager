@@ -44,13 +44,53 @@
   "Create Task": "Create Task",
   "Edit Task": "Edit Task",
 
+  "My Tasks By Status": "My Tasks By Status",
+  "Task Statuses": "Task Statuses",
+  "Failed to fetch tasks": "Failed to fetch tasks",
+
+  "Update Name": "Update Name",
+  "Change Password": "Change Password",
+
+  "Update Task": "Update Task",
+  "Delete Task": "Delete Task",
+
+  "Add Team Member": "Add Team Member",
+  "Team Members": "Team Members",
+
+  "Select User": "Select User",
+  "Role": "Role",
+  "Message": "Message",
+  "Edit Team Member": "Edit Team Member",
+
   "No Data Found": "No Data Found",
   "Confirm Logout": "Are you sure you want to logout!",
   "Failed to fetch data": "Failed to fetch data",
   "Request failed": "Request failed",
+  "Task Count": "Task Count",
 
   "Auth Error Message": "Sign-in failed!",
   "User successfully registered": "User successfully registered",
   "Email is already in use": "Email is already in use",
-  "Internal Server Error": "Internal Server Error"
+  "Internal Server Error": "Internal Server Error",
+
+  "User not found": "User not found",
+  "Name is required": "Name is required",
+  "Name updated successfully": "Name updated successfully",
+  "Failed to update name": "Failed to update name",
+  "Password updated successfully": "Password updated successfully",
+  "Old password is incorrect": "Old password is incorrect",
+  "Failed to update password": "Failed to update password",
+  "Error connecting to Mongoos": "Error connecting to Mongoose",
+  "Method Not Allowed": "Method Not Allowed",
+  "UnAuthorized": "UnAuthorized",
+  "Something Went Wrong": "Something Went Wrong",
+  "Task created successfully": "Task created successfully",
+  "Failed to create task": "Failed to create task",
+  "Task not found": "Task not found",
+  "Task updated successfully": "Task updated successfully",
+  "Task deleted successfully": "Task deleted successfully",
+  "Team member created successfully": "Team member created successfully",
+  "Failed to create team members": "Failed to create team members",
+  "Team member not found": "Team member not found",
+  "Team member updated successfully": "Team member updated successfully"
 }

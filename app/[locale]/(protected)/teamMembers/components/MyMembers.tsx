@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl'
 import { ITeamMemberPopulated } from '@/shared/interfaces/TeamMember'
 import { setCurrentMember } from '@/store/slices/teamMemberSlice'
 import { useAppDispatch, useAppSelector } from '@/hooks/useRedux'
+import { AVATAR_IMAGE } from '@/lib/constant'
 
 type IMyMembers = {
   members: ITeamMemberPopulated[]
@@ -36,7 +37,7 @@ const MyMembers = ({ members }: IMyMembers) => {
               className="flex items-center gap-2 p-4 bg-white shadow-md rounded-lg hover:bg-gray-100 transition duration-200"
             >
               <Avatar>
-                <AvatarImage src="https://github.com/shadcn.png" />
+                <AvatarImage src={teamMember?.image || AVATAR_IMAGE} />
                 <AvatarFallback>IM</AvatarFallback>
               </Avatar>
               <div className="flex-1">

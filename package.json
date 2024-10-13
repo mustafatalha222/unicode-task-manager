@@ -8,7 +8,9 @@
     "start:old": "next start",
     "lint": "next lint",
     "dev": "ts-node server.ts",
-    "start": "NODE_ENV=production ts-node server.ts"
+    "start": "NODE_ENV=production ts-node server.ts",
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.1.1",
@@ -20,14 +22,12 @@
     "@radix-ui/react-slot": "^1.1.0",
     "@radix-ui/react-switch": "^1.1.1",
     "@reduxjs/toolkit": "^2.2.7",
-    "@testing-library/jest-dom": "^6.5.0",
-    "@testing-library/react": "^16.0.1",
     "@types/bcrypt": "^5.0.2",
     "bcrypt": "^5.1.1",
+    "chart.js": "^4.4.4",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "formik": "^2.4.6",
-    "jest": "^29.7.0",
     "lucide-react": "^0.447.0",
     "mongodb": "^6.9.0",
     "mongoose": "^8.7.0",
@@ -36,6 +36,7 @@
     "next-intl": "^3.20.0",
     "react": "^18",
     "react-beautiful-dnd": "^13.1.1",
+    "react-chartjs-2": "^5.2.0",
     "react-dom": "^18",
     "react-hot-toast": "^2.4.1",
     "react-icons": "^5.3.0",
@@ -50,6 +51,10 @@
     "yup": "^1.4.0"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^6.5.0",
+    "@testing-library/react": "^16.0.1",
+    "@testing-library/user-event": "^14.5.2",
+    "@types/jest": "^29.5.13",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-beautiful-dnd": "^13.1.8",
@@ -57,8 +62,11 @@
     "@types/socket.io": "^3.0.2",
     "eslint": "^8",
     "eslint-config-next": "14.2.14",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
+    "ts-jest": "^29.2.5",
     "typescript": "^5"
   }
 }

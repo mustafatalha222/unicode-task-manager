@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl'
 import { CustomSkeleton } from '@/components/ui/skeleton'
 import useApi from '@/hooks/useApi'
 import { IUser } from '@/shared/interfaces/User'
+import { AVATAR_IMAGE } from '@/lib/constant'
 
 const Users = () => {
   const { data, loading } = useApi('/api/users')
@@ -22,7 +23,7 @@ const Users = () => {
             className="flex items-center gap-2 p-4 bg-white shadow-md rounded-lg hover:bg-gray-100 transition duration-200"
           >
             <Avatar>
-              <AvatarImage src="https://github.com/shadcn.png" />
+              <AvatarImage src={user?.image || AVATAR_IMAGE} />
               <AvatarFallback>IM</AvatarFallback>
             </Avatar>
             <div className="flex-1">

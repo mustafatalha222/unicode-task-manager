@@ -19,19 +19,20 @@ const SIDE_MENU: IElementSidebar[] = [
     icon: <MdOutlineDashboardCustomize size={20} />,
   },
   {
-    link: '/users',
-    name: 'Users',
-    icon: <MdGroups size={24} />,
+    link: '/tasks',
+    name: 'Tasks',
+    icon: <TiDocumentText size={20} />,
   },
   {
     link: '/teamMembers',
     name: 'Team Members',
     icon: <MdGroups size={24} />,
   },
+
   {
-    link: '/tasks',
-    name: 'Tasks',
-    icon: <TiDocumentText size={20} />,
+    link: '/users',
+    name: 'Users',
+    icon: <MdGroups size={24} />,
   },
   {
     link: '/profile',

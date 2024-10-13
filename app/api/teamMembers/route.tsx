@@ -44,8 +44,8 @@ const getMyTeamMembers = async (request: IRequest): Promise<NextResponse> => {
       { user: userId, createdBy: { $ne: userId } }, // Team members where current user is a member, not creator
     ],
   })
-    .populate('user', 'name email')
-    .populate('createdBy', 'name email')
+    .populate('user', 'name email image')
+    .populate('createdBy', 'name email image')
   return createResponse(members, null, API_STATUS.SUCCESS)
 }
 

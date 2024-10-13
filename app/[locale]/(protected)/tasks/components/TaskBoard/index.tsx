@@ -1,12 +1,21 @@
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 import { useCallback, useEffect, useState } from 'react'
-import { ITask, ITaskStatus } from '@/shared/interfaces/Task'
+import { ITask, ITaskPriority, ITaskStatus } from '@/shared/interfaces/Task'
 import { useAppDispatch } from '@/hooks/useRedux'
 import { setCurrentTask } from '@/store/slices/tasksSlice'
 import useApi from '@/hooks/useApi'
+import { FcHighPriority } from 'react-icons/fc'
+import { FcMediumPriority } from 'react-icons/fc'
+import { RiSlowDownLine } from 'react-icons/ri'
 
 interface ITaskBoardProps {
   tasks: ITask[]
+}
+
+const priorityMapping = {
+  [ITaskPriority.Low]: <RiSlowDownLine color="blue" />,
+  [ITaskPriority.Medium]: <FcMediumPriority />,
+  [ITaskPriority.High]: <FcHighPriority />,
 }
 
 const TaskBoard: React.FC<ITaskBoardProps> = ({ tasks }) => {
@@ -94,12 +103,16 @@ const TaskBoard: React.FC<ITaskBoardProps> = ({ tasks }) => {
                               {...provided.dragHandleProps}
                               className="bg-white p-4 mb-2 rounded-lg shadow-lg transform transition-transform duration-300 hover:shadow-xl hover:-translate-y-1"
                             >
-                              <h3
-                                className="font-semibold cursor-pointer hover:underline"
-                                onClick={() => onClickTask(task)}
-                              >
-                                {task.title}
-                              </h3>
+                              <div className="flex justify-between">
+                                <h3
+                                  className="font-semibold cursor-pointer hover:underline"
+                                  onClick={() => onClickTask(task)}
+                                >
+                                  {task.title}
+                                </h3>
+
+                                {task.priority && <div>{priorityMapping[task.priority]}</div>}
+                              </div>
                               <p className="text-gray-700">{task.description}</p>
                             </div>
                           )}

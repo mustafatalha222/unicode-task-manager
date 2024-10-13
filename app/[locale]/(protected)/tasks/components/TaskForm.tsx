@@ -100,7 +100,7 @@ const TaskForm: React.FC<ITaskFormProps> = ({ onSuccess, task }) => {
 
       {task?._id && (
         <Button className="w-80 mt-2" variant={'destructive'} disabled={loading} onClick={() => handleDelete()}>
-          {t('Delete Task ')}
+          {t('Delete Task')}
         </Button>
       )}
     </>

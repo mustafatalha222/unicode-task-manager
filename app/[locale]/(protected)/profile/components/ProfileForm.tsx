@@ -23,7 +23,7 @@ const ProfileForm = () => {
   const { loading: loadingPassword, request: requestPassword } = useApi('/api/profile/updatePassword', false)
   const dispatch = useAppDispatch()
   const user = useAppSelector((state) => state.user)
-  console.log(user, 'user')
+
   // Form values for name and password updates
   const nameFormValues = {
     name: user?.name || '',
