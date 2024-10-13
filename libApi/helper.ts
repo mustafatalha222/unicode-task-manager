@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 import connect from './connect'
 import { API_STATUS, saltRounds } from './constant'
-import { authOptions } from './auth'
+import { auth } from './auth'
 import { getServerSession } from 'next-auth'
 import bcrypt from 'bcrypt'
 import { IRequest, ISession } from './interfaces/Auth'
@@ -21,7 +21,7 @@ export const apiWrapper = (handler: (request: IRequest, params?: any) => Promise
 
       // Check if the request method is Authorized
       if (checkAuth) {
-        const session: ISession | null = await getServerSession(authOptions)
+        const session: ISession | null = await getServerSession(auth)
         if (!session) {
           return createResponse(null, 'UnAuthorized', API_STATUS.UNAUTHORIZED)
         } else {
