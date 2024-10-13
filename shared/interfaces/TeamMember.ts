@@ -20,9 +20,10 @@ export interface ITeamMemberDetail {
 
 export type ITeamMember = Omit<ITeamMemberDetail, 'user' | 'createdBy'> & {
   user: string
-  createdBy?: StringConstructor
+  createdBy?: string
 }
 
-export type ITeamMemberPopulated = Omit<ITeamMember, 'user'> & {
+export type ITeamMemberPopulated = Omit<ITeamMember, 'user' | 'createdBy'> & {
   user: IUser
+  createdBy: IUser
 }

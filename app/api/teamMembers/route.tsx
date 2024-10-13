@@ -36,9 +36,16 @@ const updateTeamMember = async (request: IRequest): Promise<NextResponse> => {
 
 // Get My Team Members
 const getMyTeamMembers = async (request: IRequest): Promise<NextResponse> => {
-  const myUserId = request.user.id
+  const userId = request.user.id
   // Populate User details
-  const members = await TeamMember.find({ createdBy: myUserId }).populate('user', 'name email')
+  const members = await TeamMember.find({
+    $or: [
+      { createdBy: userId, user: { $ne: userId } }, // Created by user but not the user themselves
+      { user: userId, createdBy: { $ne: userId } }, // Team members where current user is a member, not creator
+    ],
+  })
+    .populate('user', 'name email')
+    .populate('createdBy', 'name email')
   return createResponse(members, null, API_STATUS.SUCCESS)
 }
 

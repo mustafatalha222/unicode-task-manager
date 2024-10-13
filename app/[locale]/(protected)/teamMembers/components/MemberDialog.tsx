@@ -25,7 +25,7 @@ const MemberDialog: React.FC<MemberDialogProps> = ({ refresh }) => {
     <CustomDialog
       open={isDialogOpen}
       setOpen={onClose}
-      content={<MemberForm teamMember={currentMember} onSuccess={onSuccess} />}
+      content={<MemberForm onSuccess={onSuccess} />}
       title={currentMember ? 'Edit Team Member' : 'Add Team Member'}
       hideIcon={true}
       showCloseIcon={true}

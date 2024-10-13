@@ -5,8 +5,9 @@ import useApi from '@/hooks/useApi'
 import { CustomSkeleton } from '@/components/ui/skeleton'
 import TaskDialog from './components/MemberDialog'
 import { useAppDispatch } from '@/hooks/useRedux'
-import { setIsDialogOpen } from '@/store/slices/teamMemberSlice'
+import { setIsDialogOpen, setTeamMembers } from '@/store/slices/teamMemberSlice'
 import MyMembers from './components/MyMembers'
+import { useEffect } from 'react'
 
 const Tasks = () => {
   const t = useTranslations()
@@ -17,6 +18,10 @@ const Tasks = () => {
   const toggleDialog = () => {
     dispatch(setIsDialogOpen(true))
   }
+
+  useEffect(() => {
+    dispatch(setTeamMembers(members))
+  }, [members])
 
   return (
     <>

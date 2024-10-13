@@ -3,10 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev:old": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "start:old": "next start",
+    "lint": "next lint",
+    "dev": "ts-node server.ts",
+    "start": "NODE_ENV=production ts-node server.ts"
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.1.1",
@@ -41,8 +43,10 @@
     "react-testing-library": "^8.0.1",
     "redux": "^5.0.1",
     "socket.io": "^4.8.0",
+    "socket.io-client": "^4.8.0",
     "tailwind-merge": "^2.5.3",
     "tailwindcss-animate": "^1.0.7",
+    "ts-node": "^10.9.2",
     "yup": "^1.4.0"
   },
   "devDependencies": {
@@ -50,6 +54,7 @@
     "@types/react": "^18",
     "@types/react-beautiful-dnd": "^13.1.8",
     "@types/react-dom": "^18",
+    "@types/socket.io": "^3.0.2",
     "eslint": "^8",
     "eslint-config-next": "14.2.14",
     "postcss": "^8",

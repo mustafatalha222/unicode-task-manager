@@ -7,6 +7,7 @@ import FormSelect from '@/components/FormSelect'
 import useApi from '@/hooks/useApi'
 import { ITask, ITaskPriority, ITaskStatus } from '@/shared/interfaces/Task'
 import { ITeamMemberPopulated } from '@/shared/interfaces/TeamMember'
+import { useAppSelector } from '@/hooks/useRedux'
 
 const initialValues = {
   title: '',
@@ -44,6 +45,7 @@ const TaskForm: React.FC<ITaskFormProps> = ({ onSuccess, task }) => {
   const { loading, request } = useApi('/api/task', false)
   const { data } = useApi('/api/teamMembers')
   const { data: users = [] } = data || {}
+  const user = useAppSelector((state) => state.user)
 
   // If task prop is provided, use its values for the form
   const formValues = task
@@ -81,7 +83,12 @@ const TaskForm: React.FC<ITaskFormProps> = ({ onSuccess, task }) => {
               <FormSelect
                 label={t('Assign To')}
                 name="assignedTo"
-                options={users.map((e: ITeamMemberPopulated) => ({ value: e.user._id, label: e.user.name }))}
+                options={users.map((e: ITeamMemberPopulated) => {
+                  const isCreator = e.createdBy._id === user._id
+                  const label = isCreator ? e.user?.name : e.createdBy?.name
+
+                  return { value: e.user?._id, label }
+                })}
               />
               <Button disabled={loading} type="submit" className="w-full">
                 {task ? t('Update') : t('Create')}

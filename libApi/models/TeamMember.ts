@@ -1,9 +1,7 @@
-import { IRole, ITeamMemberDetail } from '@/shared/interfaces/TeamMember'
-import mongoose, { Schema, Document } from 'mongoose'
+import { IRole } from '@/shared/interfaces/TeamMember'
+import mongoose, { Schema } from 'mongoose'
 
-interface TeamMemberDocument extends ITeamMemberDetail, Document {}
-
-const TeamMemberSchema = new Schema<TeamMemberDocument>(
+const TeamMemberSchema = new Schema(
   {
     user: { type: Schema.Types.ObjectId, ref: 'User', required: true },
     role: { type: String, enum: Object.values(IRole), required: true, default: IRole.Member },
@@ -15,6 +13,6 @@ const TeamMemberSchema = new Schema<TeamMemberDocument>(
   }
 )
 
-const TeamMember = mongoose.models.TeamMember || mongoose.model<TeamMemberDocument>('TeamMember', TeamMemberSchema)
+const TeamMember = mongoose.models.TeamMember || mongoose.model('TeamMember', TeamMemberSchema)
 
 export default TeamMember

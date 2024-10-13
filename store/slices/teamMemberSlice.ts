@@ -1,14 +1,16 @@
-import { ITeamMember } from '@/shared/interfaces/TeamMember'
+import { ITeamMemberPopulated } from '@/shared/interfaces/TeamMember'
 import { createSlice } from '@reduxjs/toolkit'
 
 interface MemberState {
   isDialogOpen: boolean
-  currentMember?: ITeamMember | null
+  currentMember?: ITeamMemberPopulated | null
+  members: ITeamMemberPopulated[]
 }
 
 const initialState: MemberState = {
   isDialogOpen: false,
   currentMember: null,
+  members: [],
 }
 
 const tasksSlice = createSlice({
@@ -26,8 +28,11 @@ const tasksSlice = createSlice({
       state.isDialogOpen = false
       state.currentMember = null
     },
+    setTeamMembers(state, action) {
+      state.members = action.payload
+    },
   },
 })
 
-export const { setIsDialogOpen, setCurrentMember, clearMemberDialog } = tasksSlice.actions
+export const { setIsDialogOpen, setCurrentMember, clearMemberDialog, setTeamMembers } = tasksSlice.actions
 export default tasksSlice.reducer

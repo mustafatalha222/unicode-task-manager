@@ -10,6 +10,7 @@ import { IUser } from '@/shared/interfaces/User'
 import { AVATAR_IMAGE } from '@/lib/constant'
 import { setUser } from '@/store/slices/userSlice'
 import { useAppDispatch, useAppSelector } from '@/hooks/useRedux'
+import { socket } from '@/lib/socket'
 
 function Header() {
   const [currentTitle, setcurrentTitle] = useState('')
@@ -19,6 +20,12 @@ function Header() {
   const pathname = usePathname()
   const t = useTranslations()
   const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    if (user._id) {
+      socket.emit('joinRoom', user._id)
+    }
+  }, [user])
 
   useEffect(() => {
     setcurrentTitle(getTitleByPathname(pathname))

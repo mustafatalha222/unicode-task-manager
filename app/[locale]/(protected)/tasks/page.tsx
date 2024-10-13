@@ -7,6 +7,8 @@ import TaskBoard from './components/TaskBoard'
 import TaskDialog from './components/TaskDialog'
 import { useAppDispatch } from '@/hooks/useRedux'
 import { setIsCreate } from '@/store/slices/tasksSlice'
+import { useEffect } from 'react'
+import { socket } from '@/lib/socket'
 
 const Tasks = () => {
   const t = useTranslations()
@@ -18,6 +20,17 @@ const Tasks = () => {
     // Open the dialog for creating a task
     dispatch(setIsCreate(true))
   }
+
+  useEffect(() => {
+    //refresh task on socket event
+    socket.on('refreshTasks', () => {
+      refresh()
+    })
+
+    return () => {
+      socket.off('refreshTasks')
+    }
+  }, [])
 
   return (
     <>
