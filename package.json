@@ -11,7 +11,8 @@
     "start": "NODE_ENV=production ts-node server.ts",
     "test": "jest",
     "test:watch": "jest --watch",
-    "docker-up": "docker-compose up --build"
+    "docker-up-dev": "docker-compose up --build",
+    "docker-down-dev": "docker-compose down"
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.1.1",

@@ -72,8 +72,8 @@ const ProfileForm = () => {
         {({ handleSubmit }) => (
           <form onSubmit={handleSubmit}>
             <h3 className="mb-2 mt-8 text-lg font-semibold text-center">{t('Change Password')}</h3>
-            <FormInput label={'Old Password'} name="oldPassword" type="password" />
-            <FormInput label={'New Password'} name="newPassword" type="password" />
+            <FormInput label={t('Old Password')} name="oldPassword" type="password" />
+            <FormInput label={t('New Password')} name="newPassword" type="password" />
             <Button disabled={loadingPassword} type="submit" className="w-full">
               {t('Change Password')}
             </Button>
