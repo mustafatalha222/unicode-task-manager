@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project is a real-time collaborative task management tool built using **Next.js**. It provides an efficient platform for users to manage tasks, collaborate in real-time.
+This project is a collaborative task management tool built using **Next.js**. It provides an efficient platform for users to Create team members and Manage Task effectively.
 
 ## Live Demo
 
@@ -50,6 +50,7 @@ To get started with the project, follow these steps:
    ```
 
 4. Start the development server:
+
    ```bash
    npm run dev
 
@@ -64,8 +65,8 @@ To get started with the project, follow these steps:
    ```
 
 We can also use:
-`     npm run docker-up-dev
-    `
+`    npm run docker-up-dev
+   `
 
 For information on using Docker with this project, refer to the [Docker Image Documentation](https://link-to-your-docker-image.com).
 
