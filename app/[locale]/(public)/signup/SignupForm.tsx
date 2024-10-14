@@ -26,7 +26,7 @@ const SignupForm: React.FC<SignupFormProps> = ({ onSubmit, loading }) => {
       {({ handleSubmit }) => (
         <div className="flex items-center justify-center">
           <div className="w-96">
-            <h2 className="text-2xl font-bold text-center mb-4">{t('signup')}</h2>
+            <h2 className="text-2xl font-bold text-center mb-4">{t('Sign Up')}</h2>
             <form onSubmit={handleSubmit}>
               <FormInput label={'Name'} name="name" />
               <FormInput label={'Email'} name="email" type="email" />

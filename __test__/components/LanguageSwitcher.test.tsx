@@ -1,7 +1,6 @@
 import LanguageSwitcher from '@/components/LanguageSwitcher'
 import { renderWithProviders } from '../utils/test-utils'
 import { screen } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
 
 jest.mock('../../i18n/routing', () => ({
   useRouter() {

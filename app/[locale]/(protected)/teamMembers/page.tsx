@@ -9,7 +9,7 @@ import { setIsDialogOpen, setTeamMembers } from '@/store/slices/teamMemberSlice'
 import MyMembers from './components/MyMembers'
 import { useEffect } from 'react'
 
-const Tasks = () => {
+const TeamMembers = () => {
   const t = useTranslations()
   const dispatch = useAppDispatch()
   const { data, loading, refresh } = useApi('/api/teamMembers')
@@ -34,4 +34,4 @@ const Tasks = () => {
   )
 }
 
-export default Tasks
+export default TeamMembers

@@ -15,7 +15,7 @@ function CustomSkeleton({
   return (
     <>
       {loading && !length ? (
-        <div className={cn('animate-pulse rounded-md bg-primary/10', className)} {...props} />
+        <div data-testid="skeleton" className={cn('animate-pulse rounded-md bg-primary/10', className)} {...props} />
       ) : (
         !length && <h4 className="text-xl font-bold flex justify-center">{t('No Data Found')}</h4>
       )}
