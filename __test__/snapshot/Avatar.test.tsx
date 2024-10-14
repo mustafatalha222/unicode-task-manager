@@ -6,7 +6,7 @@ it('renderer language Switcher unchange', () => {
     .create(
       <Avatar>
         <AvatarImage src={''} />
-        <AvatarFallback>IMs</AvatarFallback>
+        <AvatarFallback>IM</AvatarFallback>
       </Avatar>
     )
     .toJSON()
