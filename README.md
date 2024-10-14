@@ -2,28 +2,80 @@
 
 ## Overview
 
-This project is a real-time collaborative task management tool built using **Next.js**. It provides an efficient platform for users to manage tasks, communicate in real-time, and collaborate seamlessly.
+This project is a real-time collaborative task management tool built using **Next.js**. It provides an efficient platform for users to manage tasks, collaborate in real-time.
+
+## Live Demo
+
+[App Link](https://unicode-task-manager.vercel.app/)
+
+## Table of Contents
+
+- [Overview](#overview)
+- [Live Demo](#live-demo)
+- [Features](#features)
+- [Installation](#installation)
+- [Docker Image Run](#docker-image-run)
+- [Usage](#usage)
+- [Screenshots](#screenshots)
 
 ## Features
 
-- **Framework**: Utilizes **Next.js** for both front-end and back-end, integrated with your **database of choice**.
-- **Real-Time Communication**: Implemented using **Socket.io** or **Next.js server Actions** for seamless user interactions.
+- **Framework**: Utilizes **Next.js** for both front-end and back-end, integrated with \*_MongoDb_.
+- **Real-Time Communication**: Task status update on realtime using **Socket.io**.
 - **Authentication**: Integrated **NextAuth** for user authentication, with middleware set up for verifying API requests on both front-end and back-end.
-- **Localization**: Supports both **Arabic** and **English**, making it accessible to a wider audience.
-- **Animations**: Features eye-catching, complex animations while ensuring no **memory leaks** occur.
-- **State Management**: Employs **Redux** (or a similar library) for efficient state management and data handling.
-- **Code Design Patterns**: Follows best practices with a design pattern of your choice (MVC, SOLID, Clean Architecture, etc.). The code is structured to be easily readable with clear comments.
-- **Libraries/Packages**: While leveraging open-source libraries where necessary, the main features are developed from scratch to ensure quality and performance.
-- **Testing**: Includes unit tests for key backend services and end-to-end tests for the front end using **Cypress** or **Jest**.
-- **AI-Generated Code**: AI tools may be utilized, with an emphasis on understanding and validating the code for better insights during discussions or reviews.
-- **CI/CD & Docker**: Thoughtfully configured CI/CD pipelines for automated testing and deployment, ensuring consistent quality and quick iteration cycles, along with Docker integration for easy deployment across different environments.
+- **Localization**: Supports both **Arabic** and **English**.
+- **State Management**: Utilize **Redux** and **Custom api hook** for efficient state management and data handling.
+- **Testing**: **Jest** and **RTL** is used for unit testing.
+- **CI & Docker**: Configured GitHub Actions for CI and CD is on vercel.
 
 ## Installation
 
 To get started with the project, follow these steps:
 
 1. Clone the repository:
+
    ```bash
-   git clone https://github.com/yourusername/your-repo-name.git
-   cd your-repo-name
+   https://github.com/mustafatalha222/unicode-task-manager.git
    ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Set up your database and configure the necessary environment variables in a .env file.
+
+   ```bash
+    Please use .env.example file and create .env.local file in home directory
+
+   ```
+
+4. Start the development server:
+   ```bash
+   npm run dev
+
+
+   ```
+
+## Docker Image Run
+
+1. After Step 2 (npm Install) use makefile commands
+   ```bash
+   make up-dev
+   ```
+
+We can also use:
+`     npm run docker-up-dev
+    `
+
+For information on using Docker with this project, refer to the [Docker Image Documentation](https://link-to-your-docker-image.com).
+
+## Usage
+
+1. Open your browser and navigate to http://localhost:3000 | [App Link](https://unicode-task-manager.vercel.app/)
+2. Create an account or log in to start using the task management features.
+3. Collaborate with others in real-time and manage tasks efficiently.
+
+### Screenshots
+
+![Tasks Page](./screenshots/Tasks.png)
+![Login Page](./screenshots/Login.png)
