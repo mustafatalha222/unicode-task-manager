@@ -17,10 +17,10 @@ const LanguageSwitcher = () => {
 
   return (
     <div className="flex items-center space-x-2">
-      <span className={`font-bold text-sm ${currentLocale === 'ar' ? 'text-primary' : 'text-gray-600'}`}>
+      <span className={`font-bold px-2 text-sm ${currentLocale === 'ar' ? 'text-primary' : 'text-gray-600'}`}>
         {currentLocale === 'en' ? t('English') : t('Arabic')}
       </span>
-      <Switch checked={currentLocale === 'ar'} onCheckedChange={changeLanguage} className="mr-2" />
+      <Switch dir="ltr" checked={currentLocale === 'ar'} onCheckedChange={changeLanguage} />
     </div>
   )
 }

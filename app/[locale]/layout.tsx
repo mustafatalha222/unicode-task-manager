@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import localFont from 'next/font/local'
 import './globals.css'
 import StoreProvider from '@/store/StoreProvider'
 import { NextIntlClientProvider } from 'next-intl'
@@ -7,21 +6,18 @@ import { getMessages } from 'next-intl/server'
 import { getServerSession } from 'next-auth'
 import ProviderSession from '@/providers/ProviderSession'
 import { Toaster } from 'react-hot-toast'
+import { Poppins } from 'next/font/google'
 
-const geistSans = localFont({
-  src: './fonts/GeistVF.woff',
-  variable: '--font-geist-sans',
-  weight: '100 900',
-})
-const geistMono = localFont({
-  src: './fonts/GeistMonoVF.woff',
-  variable: '--font-geist-mono',
-  weight: '100 900',
+const poppins = Poppins({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-poppins',
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
 })
 
 export const metadata: Metadata = {
   title: 'Task Manager',
-  description: 'Task Manager is an amazing tool for task management',
+  description: 'Task Manager is an amazing tool for managing task',
 }
 
 export default async function RootLayout({
@@ -36,8 +32,8 @@ export default async function RootLayout({
 
   return (
     <html lang={locale}>
-      {/* dir={locale === 'ar' ? 'rtl' : 'ltr'} */}
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      {/* */}
+      <body className={`${poppins.className}`} dir={locale === 'ar' ? 'rtl' : 'ltr'}>
         <ProviderSession session={session}>
           <NextIntlClientProvider messages={messages}>
             <Toaster position="top-center" />
