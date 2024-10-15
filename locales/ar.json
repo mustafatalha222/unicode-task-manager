@@ -40,6 +40,7 @@
   "Pending": "قيد الانتظار",
   "Todo": "لنفعل",
   "In Progress": "جارٍ التنفيذ",
+  "InProgress": "جارٍ التنفيذ",
   "Completed": "مكتمل",
   "Create Task": "إنشاء مهمة",
   "Edit Task": "تعديل المهمة",
@@ -67,6 +68,12 @@
   "Failed to fetch data": "فشل في جلب البيانات",
   "Request failed": "فشل الطلب",
   "Task Count": "عدد المهام",
+
+  "Low": "منخفض",
+  "Medium": "متوسط",
+  "High": "عالي",
+  "Cancel": "إلغاء",
+  "Confirm": "تأكيد",
 
   "Auth Error Message": "فشل تسجيل الدخول!",
   "User successfully registered": "تم تسجيل المستخدم بنجاح",

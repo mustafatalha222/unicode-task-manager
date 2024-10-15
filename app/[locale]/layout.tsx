@@ -32,7 +32,6 @@ export default async function RootLayout({
 
   return (
     <html lang={locale}>
-      {/* */}
       <body className={`${poppins.className}`} dir={locale === 'ar' ? 'rtl' : 'ltr'}>
         <ProviderSession session={session}>
           <NextIntlClientProvider messages={messages}>

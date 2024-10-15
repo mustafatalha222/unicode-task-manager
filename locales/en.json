@@ -40,6 +40,7 @@
   "Pending": "Pending",
   "Todo": "Todo",
   "In Progress": "In Progress",
+  "InProgress": "InProgress",
   "Completed": "Completed",
   "Create Task": "Create Task",
   "Edit Task": "Edit Task",
@@ -67,6 +68,12 @@
   "Failed to fetch data": "Failed to fetch data",
   "Request failed": "Request failed",
   "Task Count": "Task Count",
+
+  "Low": "Low",
+  "Medium": "Medium",
+  "High": "High",
+  "Cancel": "Cancel",
+  "Confirm": "Confirm",
 
   "Auth Error Message": "Sign-in failed!",
   "User successfully registered": "User successfully registered",

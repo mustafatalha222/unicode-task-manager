@@ -75,12 +75,12 @@ const CustomDialog: React.FC<DialogCloseButtonProps> = ({
             <div className="flex gap-4 items-center mt-7 mb-3">
               {cancelBtn && (
                 <Button className="w-40" variant={'secondary'} onClick={handleCancel || handleClose}>
-                  {cancelBtn}
+                  {t(cancelBtn)}
                 </Button>
               )}
               {successBtn && (
                 <Button className={`${cancelBtn ? 'w-40' : 'w-80'}`} type="submit" onClick={handleSuccess}>
-                  {successBtn}
+                  {t(successBtn)}
                 </Button>
               )}
             </div>

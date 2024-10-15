@@ -7,6 +7,7 @@ import useApi from '@/hooks/useApi'
 import { FcHighPriority } from 'react-icons/fc'
 import { FcMediumPriority } from 'react-icons/fc'
 import { RiSlowDownLine } from 'react-icons/ri'
+import { useTranslations } from 'next-intl'
 
 interface ITaskBoardProps {
   tasks: ITask[]
@@ -20,6 +21,7 @@ const priorityMapping = {
 
 const TaskBoard: React.FC<ITaskBoardProps> = ({ tasks }) => {
   const { request } = useApi('/api/task')
+  const t = useTranslations()
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const onUpdateTask = async (updatedTask: ITask) => {
@@ -90,8 +92,8 @@ const TaskBoard: React.FC<ITaskBoardProps> = ({ tasks }) => {
                   {...provided.droppableProps}
                   className="bg-gradient-to-b from-gray-100 to-gray-300 rounded-lg p-4 shadow-md w-full flex flex-col"
                 >
-                  <h2 className="font-bold text-lg text-gray-800 mb-2 text-center">{statusKey}</h2>
-                  <div className="flex-1 overflow-hidden">
+                  <h2 className="font-bold text-lg text-gray-800 mb-2 text-center">{t(statusKey)}</h2>
+                  <div className="flex-1 overflow-hidden" dir="ltr">
                     {taskList
                       .filter((task) => task.status === ITaskStatus[statusKey as keyof typeof ITaskStatus])
                       .map((task, index) => (
