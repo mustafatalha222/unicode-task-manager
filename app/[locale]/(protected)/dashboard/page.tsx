@@ -2,6 +2,7 @@
 import React, { useEffect } from 'react'
 import PieChart from './components/PieChart'
 import LineChart from './components/LineChart'
+import BarChart from './components/BarChart'
 import useApi from '@/hooks/useApi'
 import { Skeleton } from '@/components/ui/skeleton'
 import { socket } from '@/lib/socket'
@@ -80,6 +81,26 @@ function Dashboard() {
               ) : (
                 <div className="h-[400px]">
                   <LineChart tasks={tasks} />
+                </div>
+              )}
+            </CardContent>
+          </Card>
+          
+          {/* New BarChart Card */}
+          <Card className="lg:col-span-2">
+            <CardHeader>
+              <CardTitle className="text-xl font-semibold text-gray-700 dark:text-gray-200">
+                {t('Tasks by Priority')}
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              {loading ? (
+                <div className="space-y-3">
+                  <Skeleton className="h-[400px] w-full rounded-lg" data-testid="skeleton" />
+                </div>
+              ) : (
+                <div className="h-[400px]">
+                  <BarChart tasks={tasks} />
                 </div>
               )}
             </CardContent>
