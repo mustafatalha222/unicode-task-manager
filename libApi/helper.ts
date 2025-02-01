@@ -5,38 +5,64 @@ import { auth } from './auth'
 import { getServerSession } from 'next-auth'
 import bcrypt from 'bcrypt'
 import { IRequest, ISession } from './interfaces/Auth'
+import { Logger } from './utils/logger'
 
 export const apiWrapper = (handler: (request: IRequest, params?: any) => Promise<NextResponse>, checkAuth = true) => {
   return async (request: IRequest, params?: any) => {
+    let user: any = null;
+
     try {
-      await connect() // Ensure the database connection
-
-      // Allowed HTTP methods
-      const allowedMethods = ['POST', 'PUT', 'DELETE', 'GET']
-
-      // Check if the request method is allowed
-      if (!allowedMethods.includes(request.method as string)) {
-        return createResponse(null, 'Method Not Allowed', API_STATUS.METHOD_NOT_ALLOWED)
-      }
-
-      // Check if the request method is Authorized
       if (checkAuth) {
         const session: ISession | null = await getServerSession(auth)
         if (!session) {
-          return createResponse(null, 'UnAuthorized', API_STATUS.UNAUTHORIZED)
+          const response = createResponse(null, 'UnAuthorized', API_STATUS.UNAUTHORIZED)
+          await Logger.logApi({
+            method: request.method,
+            path: request.url,
+            status: API_STATUS.UNAUTHORIZED,
+            error: 'Unauthorized',
+          })
+          return response
         } else {
-          request.user = session.user
+          user = session.user
         }
       }
 
-      return await handler(request, params) // Pass params to the handler
-    } catch (error) {
-      console.error(JSON.stringify(error, null, 2))
+      // Connect to database if not already connected
+      await connect()
+
+      // Add user to request object if authenticated
+      const augmentedRequest: IRequest = Object.assign(request, { user })
+
+      // Execute the handler
+      const response = await handler(augmentedRequest, params)
+
+      // Log successful API call
+      await Logger.logApi({
+        method: request.method,
+        path: request.url,
+        status: response.status,
+        response: response.body,
+        userId: user?.id,
+      })
+
+      return response
+    } catch (error: any) {
+      // Log error
+      await Logger.logError({
+        method: request.method,
+        path: request.url,
+        status: API_STATUS.SERVER_ERROR,
+        error: error?.message || 'Unknown error',
+        userId: user?.id
+      })
+
       // Handle server errors
-      return createResponse(null, 'Something Went Wrong', API_STATUS.SERVER_ERROR)
+      return createResponse(null, 'Internal server error', API_STATUS.SERVER_ERROR)
     }
   }
 }
+
 interface ApiResponse<T = unknown> {
   status: number
   data?: T

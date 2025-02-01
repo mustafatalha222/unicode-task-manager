@@ -1,0 +1,94 @@
+{
+  "users": [
+    {
+      "_id": "507f1f77bcf86cd799439011",
+      "name": "Alice Johnson",
+      "email": "alice.johnson@example.com",
+      "password": "$2b$10$X9xFyFUzxU7OQgZUwDkGz.8Cd7XZt6Vm1Kq",
+      "image": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1.jpg",
+      "createdAt": "2023-12-01T10:30:00.000Z",
+      "updatedAt": "2023-12-01T10:30:00.000Z"
+    },
+    {
+      "_id": "507f1f77bcf86cd799439012",
+      "name": "Bob Wilson",
+      "email": "bob.wilson@example.com",
+      "password": "$2b$10$Y8xFyFUzxU7OQgZUwDkGz.9Cd7XZt6Vm1Kq",
+      "image": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/2.jpg",
+      "createdAt": "2023-12-02T11:20:00.000Z",
+      "updatedAt": "2023-12-02T11:20:00.000Z"
+    },
+    {
+      "_id": "507f1f77bcf86cd799439013",
+      "name": "Carol Martinez",
+      "email": "carol.martinez@example.com",
+      "password": "$2b$10$Z9xFyFUzxU7OQgZUwDkGz.0Cd7XZt6Vm1Kq",
+      "image": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/3.jpg",
+      "createdAt": "2023-12-03T09:15:00.000Z",
+      "updatedAt": "2023-12-03T09:15:00.000Z"
+    },
+    {
+      "_id": "507f1f77bcf86cd799439014",
+      "name": "David Brown",
+      "email": "david.brown@example.com",
+      "password": "$2b$10$A9xFyFUzxU7OQgZUwDkGz.1Cd7XZt6Vm1Kq",
+      "image": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/4.jpg",
+      "createdAt": "2023-12-04T14:20:00.000Z",
+      "updatedAt": "2023-12-04T14:20:00.000Z"
+    },
+    {
+      "_id": "507f1f77bcf86cd799439015",
+      "name": "Emma Davis",
+      "email": "emma.davis@example.com",
+      "password": "$2b$10$B9xFyFUzxU7OQgZUwDkGz.2Cd7XZt6Vm1Kq",
+      "image": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/5.jpg",
+      "createdAt": "2023-12-05T15:45:00.000Z",
+      "updatedAt": "2023-12-05T15:45:00.000Z"
+    },
+    {
+      "_id": "507f1f77bcf86cd799439016",
+      "name": "Frank Miller",
+      "email": "frank.miller@example.com",
+      "password": "$2b$10$C9xFyFUzxU7OQgZUwDkGz.3Cd7XZt6Vm1Kq",
+      "image": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/6.jpg",
+      "createdAt": "2023-12-06T16:30:00.000Z",
+      "updatedAt": "2023-12-06T16:30:00.000Z"
+    },
+    {
+      "_id": "507f1f77bcf86cd799439017",
+      "name": "Grace Lee",
+      "email": "grace.lee@example.com",
+      "password": "$2b$10$D9xFyFUzxU7OQgZUwDkGz.4Cd7XZt6Vm1Kq",
+      "image": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/7.jpg",
+      "createdAt": "2023-12-07T17:15:00.000Z",
+      "updatedAt": "2023-12-07T17:15:00.000Z"
+    },
+    {
+      "_id": "507f1f77bcf86cd799439018",
+      "name": "Henry Taylor",
+      "email": "henry.taylor@example.com",
+      "password": "$2b$10$E9xFyFUzxU7OQgZUwDkGz.5Cd7XZt6Vm1Kq",
+      "image": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/8.jpg",
+      "createdAt": "2023-12-08T18:00:00.000Z",
+      "updatedAt": "2023-12-08T18:00:00.000Z"
+    },
+    {
+      "_id": "507f1f77bcf86cd799439019",
+      "name": "Isabel White",
+      "email": "isabel.white@example.com",
+      "password": "$2b$10$F9xFyFUzxU7OQgZUwDkGz.6Cd7XZt6Vm1Kq",
+      "image": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/9.jpg",
+      "createdAt": "2023-12-09T19:45:00.000Z",
+      "updatedAt": "2023-12-09T19:45:00.000Z"
+    },
+    {
+      "_id": "507f1f77bcf86cd799439020",
+      "name": "Jack Anderson",
+      "email": "jack.anderson@example.com",
+      "password": "$2b$10$G9xFyFUzxU7OQgZUwDkGz.7Cd7XZt6Vm1Kq",
+      "image": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/10.jpg",
+      "createdAt": "2023-12-10T20:30:00.000Z",
+      "updatedAt": "2023-12-10T20:30:00.000Z"
+    }
+  ]
+}
