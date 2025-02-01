@@ -17,7 +17,6 @@ type PieChartProps = {
 
 const PieChart: React.FC<PieChartProps> = ({ tasks }) => {
   const t = useTranslations()
-  // Prepare data
   const statusCounts = tasks.reduce((acc: Record<string, number>, task: Task) => {
     acc[task.status] = (acc[task.status] || 0) + 1
     return acc
@@ -39,9 +38,22 @@ const PieChart: React.FC<PieChartProps> = ({ tasks }) => {
     ],
   }
 
+  const options = {
+    responsive: true,
+    maintainAspectRatio: true,
+    plugins: {
+      legend: {
+        position: 'bottom' as const,
+        align: 'center' as const,
+      },
+    },
+  }
+
   return (
-    <div className="h-[75vh]">
-      <Pie data={data} />
+    <div className="w-full h-full flex items-center justify-center">
+      <div className="w-full max-w-[400px] aspect-square">
+        <Pie data={data} options={options} />
+      </div>
     </div>
   )
 }
